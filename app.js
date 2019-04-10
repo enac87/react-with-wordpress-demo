@@ -1,14 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Header from "./components/header";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import Header from './components/Header';
+import PostList from './components/PostList';
+import PostView from './components/PostView';
 
 const App = () => (
-  <div>
-    <Header />
-    <section className="section container content">
-      <h1>Hello World</h1>
-    </section>
-  </div>
+  <Router>
+    <div>
+      <Header />
+      <section className="section container content">
+        <Route exact path="/" component={PostList} />
+        <Route path="/:slug" component={PostView} />
+      </section>
+    </div>
+  </Router>
 );
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
